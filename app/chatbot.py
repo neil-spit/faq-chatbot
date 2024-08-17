@@ -5,7 +5,7 @@ from .faq_processor import FAQProcessor
 app = FastAPI()
 
 # Initialize FAQ processor
-faqs_zip_path = "./app/faqs.zip"
+faqs_zip_path = "./app/funderpro_faqs"
 extracted_faqs_path = extract_faqs(faqs_zip_path)
 faq_data = load_faq_data(extracted_faqs_path)
 faq_processor = FAQProcessor(faq_data)
