@@ -1,10 +1,7 @@
 services:
-  backend:
-    build: ./backend
-    container_name: faq-backend
+  faq-backend:
+    build: .
     ports:
       - "8000:8000"
     volumes:
-      - ./backend/app:/app/app
-    environment:
-      - PYTHONUNBUFFERED=1
+      - .:/app
