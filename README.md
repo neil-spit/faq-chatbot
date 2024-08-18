@@ -32,12 +32,13 @@ Before you start, make sure you have the following software installed on your ma
 
 First, clone the repository to your local machine using the following command:
 
-`git clone https://github.com/your-username/faq-chatbot.git`
+`git clone https://github.com/neil-spit/faq-chatbot.git`
+
 `cd faq-chatbot`
 
 ### 2\. Set Up a Python Virtual Environment
 
-It's a good practice to create a virtual environment to isolate your project dependencies. You can do this with the following commands:
+It's good practice to create a virtual environment to isolate project dependencies. You can do this with the following commands:
 
 `python3 -m venv venv`
 
@@ -51,53 +52,15 @@ Activate the virtual environment:
 
     `source venv/bin/activate`
 
-### 3\. Install Dependencies
+### 3\. 
 
-Once the virtual environment is activated, install the required Python packages:
+Once the virtual environment is activated, run Docker Desktop. Then, build and run the containers in the terminal on VSCode:
 
-`pip install -r requirements.txt`
+`docker-compose up --build`
 
-### 4\. Run the Backend API
+### 4\. Running the CLI
 
-Run the FastAPI application that will serve the backend API:
-
-`uvicorn main:app --reload --host 0.0.0.0 --port 8000`
-
-By default, the application will start on `http://127.0.0.1:8000`. This URL will serve as the API endpoint for your CLI.
-
-### 5\. Run the CLI Application
-
-In a separate terminal, while the FastAPI API is running, execute the CLI:
-
-`python cli_app.py`
-
-You can now enter queries directly into the terminal. The CLI will send requests to the FastAPI API and display the responses.
-
-Using Docker
-------------
-
-If you prefer to run the application inside a Docker container, follow these steps:
-
-### 1\. Building the Docker Image
-
-Ensure that Docker Desktop is running, then build the Docker image with the following command:
-
-`docker build -t faq-chatbot-faq-backend .`
-
-### 2\. Running the Docker Container
-
-Run the Docker container with the following command:
-
-`docker run -p 8000:8000 faq-chatbot-faq-backend`
-
-The application will now be accessible at `http://127.0.0.1:8000`.
-
-To interact with the API via CLI, modify the `API_URL` in `cli_app.py` to:
-
-
-`API_URL = "http://localhost:8000/faq/"`
-
-Then run the CLI as usual:
+Open a new terminal and run the cli_app.py file:
 
 `python cli_app.py`
 

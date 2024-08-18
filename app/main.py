@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Query
-from faq_fetcher import load_faq_data
-from faq_processor import FAQProcessor
+from .faq_fetcher import load_faq_data
+from .faq_processor import FAQProcessor
 from pathlib import Path
 
 app = FastAPI()
