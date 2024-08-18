@@ -2,8 +2,7 @@ import openai
 import numpy as np
 from typing import List, Dict, Any
 
-openai.api_key = "sk-RtV2WBtKkDjuRePuamnWVJpuMbaweq_kMLbm5tuVFFT3BlbkFJMzBRwDoAPw2qh7AU-vk6wzEeqjj6SRZtyEH-FkjtQA"
-
+openai.api_key = ""
 
 class FAQProcessor:
     def __init__(self, faqs: List[Dict[str, str]], threshold: float = 0.9):
