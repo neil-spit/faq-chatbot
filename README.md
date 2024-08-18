@@ -32,9 +32,8 @@ Before you start, make sure you have the following software installed on your ma
 
 First, clone the repository to your local machine using the following command:
 
-```bash
-git clone https://github.com/your-username/faq-chatbot.git
-cd faq-chatbot `
+`git clone https://github.com/your-username/faq-chatbot.git`
+`cd faq-chatbot`
 
 ### 2\. Set Up a Python Virtual Environment
 
@@ -70,7 +69,7 @@ By default, the application will start on `http://127.0.0.1:8000`. This URL will
 
 In a separate terminal, while the FastAPI API is running, execute the CLI:
 
-`python cli.py`
+`python cli_app.py`
 
 You can now enter queries directly into the terminal. The CLI will send requests to the FastAPI API and display the responses.
 
