@@ -1,8 +1,10 @@
 import openai
+import os
 import numpy as np
 from typing import List, Dict, Any
 
-openai.api_key = ""
+# Set OpenAI API key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class FAQProcessor:
     def __init__(self, faqs: List[Dict[str, str]], threshold: float = 0.9):
