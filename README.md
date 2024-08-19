@@ -28,7 +28,7 @@ cd faq-chatbot
 
 Next, configure your OpenAI API key. Open the .env file in the root of your project directory and update the OPENAI_API_KEY variable with your actual API key. For example:
 
-OPENAI_API_KEY=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
+OPENAI_API_KEY=""
 With the configuration in place, build and start the Docker containers. Use Docker Compose to handle the setup:
 
 docker-compose build
