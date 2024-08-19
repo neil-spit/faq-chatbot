@@ -1,19 +1,15 @@
-`# FAQ Chatbot CLI Application
+# FAQ Chatbot CLI Application
 
-This is a simple FAQ chatbot application built with FastAPI, but it interacts via a Command-Line Interface (CLI). Users can input questions, and the application will respond with answers based on a predefined dataset of FAQs. The backend is served by FastAPI, while the CLI uses HTTP requests to communicate with the FastAPI API.
+This project is an FAQ chatbot built with FastAPI. It provides an interactive API that can be used to retrieve answers from a predefined dataset of FAQs. The backend is served by FastAPI, and you can interact with the API via Swagger UI provided by FastAPI.
 
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
 - [Setting Up the Environment](#setting-up-the-environment)
- - [1\. Clone the Repository](#1-clone-the-repository)
- - [2\. Set Up a Python Virtual Environment](#2-set-up-a-python-virtual-environment)
- - [3\. Install Dependencies](#3-install-dependencies)
- - [4\. Run the Backend API](#4-run-the-backend-api)
- - [5\. Run the CLI Application](#5-run-the-cli-application)
-- [Using Docker](#using-docker)
- - [1\. Building the Docker Image](#1-building-the-docker-image)
- - [2\. Running the Docker Container](#2-running-the-docker-container)
+  - [Clone the Repository](#clone-the-repository)
+  - [Configure the OpenAI API Key](#configure-the-openai-api-key)
+  - [Build and Start Docker Containers](#build-and-start-docker-containers)
+  - [Access Swagger UI](#access-swagger-ui)
 - [Common Issues and Troubleshooting](#common-issues-and-troubleshooting)
 - [License](#license)
 
@@ -21,59 +17,36 @@ This is a simple FAQ chatbot application built with FastAPI, but it interacts vi
 
 Before you start, make sure you have the following software installed on your machine:
 
-- [Python 3.10+](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installation/)
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) (for Docker setup)
+- **Docker Desktop**: Ensure Docker Desktop is installed and running on your machine. [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
 
 ## Setting Up the Environment
 
-### 1. Clone the Repository
+Begin by cloning the repository to your local machine:
 
-First, clone the repository to your local machine using the following command:
+git clone https://github.com/your-username/faq-chatbot.git
+cd faq-chatbot
 
-`git clone https://github.com/neil-spit/faq-chatbot.git`
+Next, configure your OpenAI API key. Open the .env file in the root of your project directory and update the OPENAI_API_KEY variable with your actual API key. For example:
 
-`cd faq-chatbot`
+OPENAI_API_KEY=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
+With the configuration in place, build and start the Docker containers. Use Docker Compose to handle the setup:
 
-### 2\. Set Up a Python Virtual Environment
+docker-compose build
+docker-compose up
+This will build the Docker image according to the Dockerfile and start the container as specified in the docker-compose.yml file.
 
-It's good practice to create a virtual environment to isolate project dependencies. You can do this with the following commands:
+Once the containers are running, you can access the Swagger UI to interact with the API. Open a web browser and navigate to:
 
-`python3 -m venv venv`
+http://localhost:8000/docs
+Swagger UI provides an interactive interface for testing the API endpoints. You can explore available endpoints, test them, and view the responses directly in your browser.
 
-Activate the virtual environment:
+## Common Issues and Troubleshooting
+If you encounter an error like "App failed to load" when running the FastAPI API, make sure that:
 
--   **On Windows:**
+The main.py file has the correct structure and includes the FastAPI app instance.
+The .env file is correctly configured with the OpenAI API key.
+All dependencies are correctly specified in the requirements.txt.
+For Docker issues such as ports already in use, ensure that no other services are running on port 8000. You may also specify a different port in the docker-compose.yml file or adjust the docker run command if necessary.
 
-    `.\venv\Scripts\activate`
-
--   **On macOS/Linux:**
-
-    `source venv/bin/activate`
-
-### 3\. 
-
-Once the virtual environment is activated, run Docker Desktop. Then, build and run the containers in the terminal on VSCode:
-
-`docker-compose up --build`
-
-### 4\. Running the CLI
-
-Open a new terminal and run the cli_app.py file:
-
-`python cli_app.py`
-
-Common Issues and Troubleshooting
----------------------------------
-
-### FastAPI App Not Found
-
-If you encounter an error like `App failed to load` when running the FastAPI API, ensure that:
-
--   The `main.py` file has the correct structure and includes the FastAPI `app` instance.
--   All dependencies are correctly installed in your virtual environment.
-
-### Docker Issues
-
-If you run into Docker issues such as ports already in use, ensure that no other services are running on port `8000`, or specify a different port in the `docker run` command.
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
