@@ -7,7 +7,7 @@ from typing import List, Dict, Any
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class FAQProcessor:
-    def __init__(self, faqs: List[Dict[str, str]], threshold: float = 0.9):
+    def __init__(self, faqs: List[Dict[str, str]], threshold: float = 0.8):
         self.faqs = faqs
         self.threshold = threshold
         self.embeddings = self._compute_embeddings()
