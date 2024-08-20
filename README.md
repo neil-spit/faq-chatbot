@@ -1,56 +1,43 @@
-# FAQ Chatbot CLI Application
+# FAQ Chatbot
 
-This project is an FAQ chatbot built with FastAPI. It provides an interactive API that can be used to retrieve answers from a predefined dataset of FAQs. The backend is served by FastAPI, and you can interact with the API via Swagger UI provided by FastAPI.
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Setting Up the Environment](#setting-up-the-environment)
-- [Common Issues and Troubleshooting](#common-issues-and-troubleshooting)
-- [License](#license)
+This project is an FAQ chatbot built with FastAPI. The chatbot responds to user queries based on a predefined set of FAQs. The application is containerized using Docker, making it easy to set up and run.
 
 ## Prerequisites
 
-Before you start, make sure you have the following software installed on your machine:
+Before setting up the project, ensure that you have the following software installed:
 
-- **Docker Desktop**:
-  
-  Ensure Docker Desktop is installed and running on your machine.
-  [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
+- **Docker Desktop**: Required for building and running the application containers. [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
+- **Git**: To clone the project repository. [Download Git](https://git-scm.com/downloads).
 
-## Setting Up the Environment
+## Setup and Run
 
-Begin by cloning the repository to your local machine:
+Clone the repository to your local machine:
 
-```git clone https://github.com/neil-spit/faq-chatbot.git```
+```git clone https://github.com/neil-spit/faq-chatbot.git faq```
+```cd faq```
 
-```cd faq-chatbot```
+Configure your OpenAI API key:
 
-Next, configure your OpenAI API key. Open the .env file in the root of your project directory and update the OPENAI_API_KEY variable with your actual API key. For example:
+Open the docker-compose.yml file in the root of your project directory.
 
-```OPENAI_API_KEY=your-openai-api-key```
+Locate the environment section under the faq-backend service.
 
-With the configuration in place, build and start the Docker containers. Use Docker Compose to handle the setup:
+Replace the placeholder with your actual OpenAI API key. 
 
-```docker-compose build```
+Build and start the Docker containers using Docker Compose:
 
-```docker-compose up```
+```docker-compose up --build```
 
-This will build the Docker image according to the Dockerfile and start the container as specified in the docker-compose.yml file.
+This will build the Docker image and start the container as specified in the docker-compose.yml file.
 
-Once the containers are running, you can access the Swagger UI to interact with the API. Open a web browser and navigate to:
+Once the containers are running, you can access the web-based frontend by opening a web browser and navigating to:
 
-```http://localhost:8000/docs```
+```http://localhost:8001```
 
-Swagger UI provides an interactive interface for testing the API endpoints. You can explore available endpoints, test them, and view the responses directly in your browser.
+You can ask questions in the chat interface, and the bot will respond based on the FAQs loaded in the backend.
 
-## Common Issues and Troubleshooting
-If you encounter an error like "App failed to load" when running the FastAPI API, make sure that:
+## Additional Notes
 
-- The main.py file has the correct structure and includes the FastAPI app instance.
-- The .env file is correctly configured with the OpenAI API key.
-- All dependencies are correctly specified in the requirements.txt.
-- For Docker issues such as ports already in use, ensure that no other services are running on port 8000. You may also specify a different port in the docker-compose.yml file or adjust the docker run command if necessary.
+The API documentation is available via Swagger UI at http://localhost:8000/docs.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+If you need to modify the chatbot's behavior or the FAQ dataset, you can update the relevant files and restart the application.
