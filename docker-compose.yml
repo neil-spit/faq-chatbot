@@ -1,15 +1,9 @@
-version: '3'
+version: '3.8'
+
 services:
   faq-backend:
     build: .
     ports:
       - "8000:8000"
-    environment:
-      - OPENAI_API_KEY=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
-
-  faq-frontend:
-    image: nginx:alpine
-    volumes:
-      - ./frontend:/usr/share/nginx/html
-    ports:
-      - "8001:80"
+    env_file:
+      - .env

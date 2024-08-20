@@ -40,7 +40,7 @@ class FAQProcessor:
             most_relevant = max(relevant_faqs, key=lambda x: x[2])
             return {'question': most_relevant[0], 'answer': most_relevant[1]}
         else:
-            return {'question': 'No relevant answer', 'answer': "I'm unable to answer that question. Please try again, or ask another question."}
+            return {'question': 'No relevant answer', 'answer': "I'm unable to answer that question."}
 
     def cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
         vec1, vec2 = np.array(vec1), np.array(vec2)

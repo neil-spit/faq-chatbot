@@ -20,7 +20,9 @@ def main():
             break
         result = get_faq_response(query)
         if result:
-            print(f"Response: {result['result']['answer']}")
+            print("\nResponse:")
+            print(f"Question: {result['result']['question']}")
+            print(f"Answer: {result['result']['answer']}")
         print()
 
 if __name__ == "__main__":
