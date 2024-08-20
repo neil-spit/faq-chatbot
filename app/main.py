@@ -1,9 +1,19 @@
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
 from .faq_fetcher import load_faq_data
 from .faq_processor import FAQProcessor
-from pathlib import Path
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins. For production, specify the allowed origins explicitly.
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 # Initialize FAQ processor
 faq_directory = Path("./app/funderpro_faqs")
