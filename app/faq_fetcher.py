@@ -12,12 +12,15 @@ def extract_faqs(zip_path: str, extract_to: str = "./extracted_faqs") -> pathlib
     :return: Path to the directory containing extracted files.
     :raises FileNotFoundError: If the zip file does not exist.
     """
+    # Check if the zip file exists
     if not os.path.exists(zip_path):
         raise FileNotFoundError(f"Zip file not found at {zip_path}")
 
+    # Extract the contents of the zip file to the specified directory
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_to)
 
+    # Return the path to the directory containing extracted files
     return pathlib.Path(extract_to)
 
 def load_faq_data(extracted_folder: pathlib.Path) -> List[dict]:
@@ -30,20 +33,24 @@ def load_faq_data(extracted_folder: pathlib.Path) -> List[dict]:
     """
     faq_data = []
 
-    for subdir in extracted_folder.iterdir():
-        if subdir.is_dir():
-            for file in subdir.glob("*.txt"):
+    # Walk through all directories and subdirectories
+    for root, _, files in os.walk(extracted_folder):
+        for file in files:
+            if file.endswith(".txt"):
+                file_path = pathlib.Path(root) / file
                 try:
-                    with open(file, 'r') as f:
+                    with open(file_path, 'r') as f:
                         lines = f.readlines()
-                        if len(lines) >= 2:
-                            question = lines[0].strip()
-                            answer = ''.join(lines[1:]).strip()
+                        if len(lines) >= 2:  # Ensure there are at least two lines (question + answer)
+                            question = lines[0].strip()  # First line is the question
+                            answer = ''.join(lines[1:]).strip()  # Remaining lines form the answer
                             faq_data.append({'question': question, 'answer': answer})
                 except Exception as e:
-                    print(f"Error reading file {file}: {e}")
+                    print(f"Error reading file {file_path}: {e}")
 
+    # Raise an error if no FAQ data was loaded
     if not faq_data:
         raise ValueError("No FAQs found in the extracted files.")
 
     return faq_data
+
