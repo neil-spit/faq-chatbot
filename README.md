@@ -24,7 +24,7 @@ Configure your OpenAI API key:
 
 - Locate the environment section under the faq-backend service.
 
-- Replace the placeholder with your actual OpenAI API key. 
+- Replace the double quotes ("") with your actual OpenAI API key.
 
 In the terminal, build and start the Docker containers using Docker Compose:
 
