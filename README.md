@@ -7,6 +7,7 @@ This project is an FAQ chatbot built with FastAPI. The chatbot responds to user 
 Before setting up the project, ensure that you have the following software installed:
 
 - **Docker Desktop**: Required for building and running the application containers. [Download Docker Desktop](https://www.docker.com/products/docker-desktop).
+- **Python 3.9+**
 - **Git**: To clone the project repository. [Download Git](https://git-scm.com/downloads).
 
 ## Setup and Run
@@ -14,17 +15,18 @@ Before setting up the project, ensure that you have the following software insta
 Clone the repository to your local machine:
 
 ```git clone https://github.com/neil-spit/faq-chatbot.git faq```
+
 ```cd faq```
 
 Configure your OpenAI API key:
 
-Open the docker-compose.yml file in the root of your project directory.
+- Open the docker-compose.yml file in the root of your project directory.
 
-Locate the environment section under the faq-backend service.
+- Locate the environment section under the faq-backend service.
 
-Replace the placeholder with your actual OpenAI API key. 
+- Replace the placeholder with your actual OpenAI API key. 
 
-Build and start the Docker containers using Docker Compose:
+In the terminal, build and start the Docker containers using Docker Compose:
 
 ```docker-compose up --build```
 
